@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinybeans Investor Hub</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      overflow-x: auto; /* Allows horizontal scrolling on small screens */
+    }
+    .tabs button {
+      padding: 10px 20px;
+      background: #f4f4f4;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      white-space: nowrap; /* Prevents text from wrapping */
+    }
+    .tabs button.active {
+      background: #333;
+      color: #fff;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 5px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .widget-placeholder {
+      background: #e0e0e0;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    form input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form button {
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .tabs {
+        flex-wrap: nowrap; /* Ensures tabs stay in a single row */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const App = () => {
+      const [activeTab, setActiveTab] = React.useState('home');
+
+      return (
+        <div className="container">
+          <h1>Tinybeans Investor Hub</h1>
+
+          {/* Tabs */}
+          <div className="tabs">
+            <button className={activeTab === 'home' ? 'active' : ''} onClick={() => setActiveTab('home')}>Home</button>
+            <button className={activeTab === 'market-data' ? 'active' : ''} onClick={() => setActiveTab('market-data')}>Market Data</button>
+            <button className={activeTab === 'reports' ? 'active' : ''} onClick={() => setActiveTab('reports')}>Reports and Announcements</button>
+            <button className={activeTab === 'investor-info' ? 'active' : ''} onClick={() => setActiveTab('investor-info')}>Investor Information</button>
+            <button className={activeTab === 'email-signup' ? 'active' : ''} onClick={() => setActiveTab('email-signup')}>Email Signup</button>
+          </div>
+
+          {/* Home Tab */}
+          <div className={`tab-content ${activeTab === 'home' ? 'active' : ''}`}>
+            <h2>Welcome to Tinybeans</h2>
+            <p>Content to be confirmed.</p>
+          </div>
+
+          {/* Market Data Tab */}
+          <div className={`tab-content ${activeTab === 'market-data' ? 'active' : ''}`}>
+            <h2>Market Data</h2>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Condense</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Strip</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Graph</div>
+          </div>
+
+          {/* Reports and Announcements Tab */}
+          <div className={`tab-content ${activeTab === 'reports' ? 'active' : ''}`}>
+            <h2>Reports and Announcements</h2>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Announcements Table</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Annual Reports</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Quarterly Reports</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Half Yearly Reports</div>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Financial Reports</div>
+          </div>
+
+          {/* Investor Information Tab */}
+          <div className={`tab-content ${activeTab === 'investor-info' ? 'active' : ''}`}>
+            <h2>Investor Information</h2>
+            <div className="widget-placeholder">Placeholder for Sharelink Widget: Presentations</div>
+          </div>
+
+          {/* Email Signup Tab */}
+          <div className={`tab-content ${activeTab === 'email-signup' ? 'active' : ''}`}>
+            <h2>Email Signup</h2>
+            <form>
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+              <input type="email" placeholder="Email (required)" required />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
