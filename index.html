@@ -88,7 +88,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    /* Sharelink iframe style */
+    /* Style for Sharelink iframes */
     .sharelink {
       width: 100%;
       border: 0;
@@ -159,44 +159,30 @@
             </p>
           </div>
 
-          {/* Market Data Tab */}
+          {/* Market Data Tab with Two Widgets */}
           <div className={`tab-content ${activeTab === 'market-data' ? 'active' : ''}`}>
             <h2>Market Data</h2>
-            {/* Simple Share Price Widget */}
+            {/* Share Price Widget */}
             <iframe 
-              className="sharelink"
-              frameBorder="0" 
+              width="100%" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
+              class="sharelink" 
               scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/a1b2c3d4-e5f6-7890-abcd-ef1234567890">
+              style="width: 1px;min-width: 100%;" 
+              data-src="https://app.sharelinktechnologies.com/widget/3ec21f41-79b5-45d8-a239-aa9f62e5b5fb">
             </iframe>
-            {/* Condensed Share Price Widget */}
+            {/* Share Price History Widget */}
             <iframe 
-              className="sharelink"
-              frameBorder="0" 
+              width="100%" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
+              class="sharelink" 
               scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/b1c2d3e4-f5a6-7890-abcd-ef2345678901">
-            </iframe>
-            {/* Share Price Strip Widget */}
-            <iframe 
-              className="sharelink"
-              frameBorder="0" 
-              loading="lazy" 
-              allowTransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/c1d2e3f4-a5b6-7890-abcd-ef3456789012">
-            </iframe>
-            {/* Share Price Graph Widget */}
-            <iframe 
-              className="sharelink"
-              frameBorder="0" 
-              loading="lazy" 
-              allowTransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/d1e2f3a4-b5c6-7890-abcd-ef4567890123">
+              style="width: 1px;min-width: 100%;" 
+              data-src="https://app.sharelinktechnologies.com/widget/9f39e13c-6615-4709-9cdf-628d6878bb18">
             </iframe>
           </div>
 
@@ -206,45 +192,45 @@
             {/* ASX Announcements Widget */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/e1f2a3b4-c5d6-7890-abcd-ef5678901234">
             </iframe>
             {/* Annual Reports Widget (Share Price Box) */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/f1a2b3c4-d5e6-7890-abcd-ef6789012345">
             </iframe>
             {/* Quarterly Reports Widget (Commodity) */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/a2b3c4d5-e6f7-7890-abcd-ef7890123456">
             </iframe>
             {/* Half Yearly Reports Widget (Share Price Stacked) */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/b2c3d4e5-f6a7-7890-abcd-ef8901234567">
             </iframe>
             {/* Financial Reports Widget (Candlestick Graph) */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/c2d3e4f5-a6b7-7890-abcd-ef9012345678">
             </iframe>
@@ -256,9 +242,9 @@
             {/* Presentations Widget (Single Currency) */}
             <iframe 
               className="sharelink"
-              frameBorder="0" 
+              frameborder="0" 
               loading="lazy" 
-              allowTransparency="true" 
+              allowtransparency="true" 
               scrolling="no" 
               data-src="https://app.sharelinktechnologies.com/widget/d2e3f4a5-b6c7-7890-abcd-ef0123456789">
             </iframe>
