@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tinybeans Investor Hub</title>
+  <!-- Sharelink widget script -->
+  <script src="https://app.sharelinktechnologies.com/widget/js" defer></script>
   <style>
     /* Global Styles */
     body {
@@ -20,6 +22,9 @@
     h1 {
       font-size: 2.5rem;
       color: #333;
+    }
+    h2 {
+      margin-top: 0;
     }
     .tabs {
       display: flex;
@@ -45,21 +50,18 @@
       padding: 20px;
       background: #f9f9f9;
       border-radius: 5px;
+      margin-bottom: 20px;
     }
     .tab-content.active {
       display: block;
     }
-    .widget-placeholder {
-      background: #e0e0e0;
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+    /* Constrain the email form width */
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
     }
     form input {
       padding: 10px;
@@ -74,16 +76,26 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    /* Responsive adjustments for tabs */
     @media (max-width: 768px) {
       .tabs {
-        flex-wrap: nowrap; /* Ensures tabs stay in a single row */
+        flex-wrap: nowrap;
       }
+    }
+    /* Style for Sharelink iframes */
+    .sharelink {
+      width: 100%;
+      border: 0;
+      min-width: 100%;
+      display: block;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
   <div id="root"></div>
 
+  <!-- React & ReactDOM -->
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -98,11 +110,31 @@
 
           {/* Tabs */}
           <div className="tabs">
-            <button className={activeTab === 'home' ? 'active' : ''} onClick={() => setActiveTab('home')}>Home</button>
-            <button className={activeTab === 'market-data' ? 'active' : ''} onClick={() => setActiveTab('market-data')}>Market Data</button>
-            <button className={activeTab === 'reports' ? 'active' : ''} onClick={() => setActiveTab('reports')}>Reports and Announcements</button>
-            <button className={activeTab === 'investor-info' ? 'active' : ''} onClick={() => setActiveTab('investor-info')}>Investor Information</button>
-            <button className={activeTab === 'email-signup' ? 'active' : ''} onClick={() => setActiveTab('email-signup')}>Email Signup</button>
+            <button 
+              className={activeTab === 'home' ? 'active' : ''} 
+              onClick={() => setActiveTab('home')}>
+              Home
+            </button>
+            <button 
+              className={activeTab === 'market-data' ? 'active' : ''} 
+              onClick={() => setActiveTab('market-data')}>
+              Market Data
+            </button>
+            <button 
+              className={activeTab === 'reports' ? 'active' : ''} 
+              onClick={() => setActiveTab('reports')}>
+              Reports and Announcements
+            </button>
+            <button 
+              className={activeTab === 'investor-info' ? 'active' : ''} 
+              onClick={() => setActiveTab('investor-info')}>
+              Investor Information
+            </button>
+            <button 
+              className={activeTab === 'email-signup' ? 'active' : ''} 
+              onClick={() => setActiveTab('email-signup')}>
+              Email Signup
+            </button>
           </div>
 
           {/* Home Tab */}
@@ -114,26 +146,106 @@
           {/* Market Data Tab */}
           <div className={`tab-content ${activeTab === 'market-data' ? 'active' : ''}`}>
             <h2>Market Data</h2>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Condense</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Strip</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Share Price Graph</div>
+            {/* Share Price Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/3ec21f41-79b5-45d8-a239-aa9f62e5b5fb">
+            </iframe>
+            {/* Share Price Condense Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/283c14e5-7b53-4e7e-8f4a-23b6e4a1d7a2">
+            </iframe>
+            {/* Share Price Strip Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/91a6f7a2-7c4f-4a57-9b77-12ab34cd56ef">
+            </iframe>
+            {/* Share Price Graph Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/45ef89ab-1234-4e78-9a2b-45cd678ef012">
+            </iframe>
           </div>
 
           {/* Reports and Announcements Tab */}
           <div className={`tab-content ${activeTab === 'reports' ? 'active' : ''}`}>
             <h2>Reports and Announcements</h2>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Announcements Table</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Annual Reports</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Quarterly Reports</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Half Yearly Reports</div>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Financial Reports</div>
+            {/* Announcements Table Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/abcdef12-3456-7890-abcd-ef1234567890">
+            </iframe>
+            {/* Annual Reports Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/bcdef123-4567-890a-bcde-f1234567890a">
+            </iframe>
+            {/* Quarterly Reports Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/cdef1234-5678-90ab-cdef-1234567890ab">
+            </iframe>
+            {/* Half Yearly Reports Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/def12345-6789-0abc-def1-234567890abc">
+            </iframe>
+            {/* Financial Reports Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/ef123456-7890-abcd-ef12-34567890abcd">
+            </iframe>
           </div>
 
           {/* Investor Information Tab */}
           <div className={`tab-content ${activeTab === 'investor-info' ? 'active' : ''}`}>
             <h2>Investor Information</h2>
-            <div className="widget-placeholder">Placeholder for Sharelink Widget: Presentations</div>
+            {/* Presentations Widget */}
+            <iframe 
+              className="sharelink"
+              frameBorder="0" 
+              loading="lazy" 
+              allowTransparency="true" 
+              scrolling="no" 
+              data-src="https://app.sharelinktechnologies.com/widget/f1234567-890a-bcde-f123-4567890abcde">
+            </iframe>
           </div>
 
           {/* Email Signup Tab */}
