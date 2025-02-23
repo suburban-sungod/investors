@@ -1,270 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tinybeans Investor Hub</title>
-  <!-- Sharelink widget script -->
-  <script src="https://app.sharelinktechnologies.com/widget/js" defer></script>
-  <style>
-    /* Global Styles – Mimicking Tinybeans.com */
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-color: #ffffff;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #0070f3; /* Tinybeans blue accent */
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    h2 {
-      margin-top: 0;
-      color: #333;
-    }
-    /* Tabs styling */
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      overflow-x: auto;
-      justify-content: center;
-    }
-    .tabs button {
-      padding: 10px 20px;
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      white-space: nowrap;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    .tabs button.active {
-      background: #0070f3;
-      color: #ffffff;
-      border-color: #0070f3;
-    }
-    /* Tab Content */
-    .tab-content {
-      display: none;
-      padding: 20px;
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 20px;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    /* Email Form */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    form input {
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    form button {
-      padding: 10px;
-      font-size: 1rem;
-      background: #0070f3;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    /* Style for Sharelink iframes */
-    .sharelink {
-      width: 100%;
-      border: 0;
-      min-width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 768px) {
-      .tabs {
-        flex-wrap: nowrap;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tinybeans Investor Hub</title>
+    <!-- Sharelink widget script -->
+    <script src="https://app.sharelinktechnologies.com/widget/js" defer></script>
+    <style>
+      /* Global Styles – Mimicking Tinybeans.com */
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #ffffff;
+        color: #333;
+        margin: 0;
+        padding: 0;
       }
-    }
-  </style>
-</head>
-<body>
-  <div id="root"></div>
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      h1 {
+        font-size: 2.5rem;
+        color: #0070f3; /* Tinybeans blue accent */
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      h2 {
+        margin-top: 0;
+        color: #333;
+      }
+      /* Tabs styling */
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        overflow-x: auto;
+        justify-content: center;
+      }
+      .tabs button {
+        padding: 10px 20px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        white-space: nowrap;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      .tabs button.active {
+        background: #0070f3;
+        color: #ffffff;
+        border-color: #0070f3;
+      }
+      /* Tab Content */
+      .tab-content {
+        display: none;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      /* Email Form */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      form input {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      form button {
+        padding: 10px;
+        font-size: 1rem;
+        background: #0070f3;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      /* Style for Sharelink iframes */
+      .sharelink {
+        width: 100%;
+        border: 0;
+        min-width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+      @media (max-width: 768px) {
+        .tabs {
+          flex-wrap: nowrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
 
-  <!-- React & ReactDOM -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script type="text/babel">
-    const App = () => {
-      const [activeTab, setActiveTab] = React.useState('home');
+    <script type="text/babel">
+      const App = () => {
+        const [activeTab, setActiveTab] = React.useState('home');
 
-      return (
-        <div className="container">
-          <h1>Tinybeans Investor Hub</h1>
+        return (
+          <div className="container">
+            <h1>Tinybeans Investor Hub</h1>
 
-          {/* Tabs */}
-          <div className="tabs">
-            <button 
-              className={activeTab === 'home' ? 'active' : ''} 
-              onClick={() => setActiveTab('home')}>
-              Home
-            </button>
-            <button 
-              className={activeTab === 'market-data' ? 'active' : ''} 
-              onClick={() => setActiveTab('market-data')}>
-              Market Data
-            </button>
-            <button 
-              className={activeTab === 'reports' ? 'active' : ''} 
-              onClick={() => setActiveTab('reports')}>
-              Reports and Announcements
-            </button>
-            <button 
-              className={activeTab === 'investor-info' ? 'active' : ''} 
-              onClick={() => setActiveTab('investor-info')}>
-              Investor Information
-            </button>
-            <button 
-              className={activeTab === 'email-signup' ? 'active' : ''} 
-              onClick={() => setActiveTab('email-signup')}>
-              Email Signup
-            </button>
+            {/* Tabs */}
+            <div className="tabs">
+              <button
+                className={activeTab === 'home' ? 'active' : ''}
+                onClick={() => setActiveTab('home')}
+              >
+                Home
+              </button>
+              <button
+                className={activeTab === 'market-data' ? 'active' : ''}
+                onClick={() => setActiveTab('market-data')}
+              >
+                Market Data
+              </button>
+              <button
+                className={activeTab === 'reports' ? 'active' : ''}
+                onClick={() => setActiveTab('reports')}
+              >
+                Reports and Announcements
+              </button>
+              <button
+                className={activeTab === 'investor-info' ? 'active' : ''}
+                onClick={() => setActiveTab('investor-info')}
+              >
+                Investor Information
+              </button>
+              <button
+                className={activeTab === 'email-signup' ? 'active' : ''}
+                onClick={() => setActiveTab('email-signup')}
+              >
+                Email Signup
+              </button>
+            </div>
+
+            {/* Home Tab with About Us Section */}
+            <div className={`tab-content ${activeTab === 'home' ? 'active' : ''}`}>
+              <h2>About Tinybeans</h2>
+              <p>
+                Tinybeans is a leading global consumer subscription platform, serving
+                millions of Millennial and Gen Z parents and their families monthly.
+                At its core, Tinybeans is a private photo-sharing app and media platform
+                that connects families and turns moments into memories.
+              </p>
+              <p>
+                Tinybeans has been loved and trusted by parents and families around the
+                world since its founding in Australia in 2012, and is an ongoing resource
+                for parents due to its insightful, relatable and credible content written
+                by a team of dedicated parents and experts. Tinybeans enjoys over 150,000
+                5-star reviews in the Apple App and Google Play stores, and has users in
+                almost every country in the world.
+              </p>
+            </div>
+
+            {/* Market Data Tab with Two Widgets */}
+            <div
+              className={`tab-content ${
+                activeTab === "market-data" ? "active" : ""
+              }`}
+            >
+              <h2>Market Data</h2>
+              {/* Share Price Widget */}
+              <iframe
+                width="100%"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                className="sharelink"
+                scrolling="no"
+                style={{ width: "1px", minWidth: "100%" }}
+                data-src="https://app.sharelinktechnologies.com/widget/3ec21f41-79b5-45d8-a239-aa9f62e5b5fb"
+              ></iframe>
+              {/* Share Price History Widget */}
+              <iframe
+                width="100%"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                className="sharelink"
+                scrolling="no"
+                style={{ width: "1px", minWidth: "100%" }}
+                data-src="https://app.sharelinktechnologies.com/widget/9f39e13c-6615-4709-9cdf-628d6878bb18"
+              ></iframe>
+            </div>
+
+            {/* Reports and Announcements Tab */}
+            <div
+              className={`tab-content ${activeTab === "reports" ? "active" : ""}`}
+            >
+              <h2>Reports and Announcements</h2>
+              {/* ASX Announcements Widget */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/e1f2a3b4-c5d6-7890-abcd-ef5678901234"
+              ></iframe>
+              {/* Annual Reports Widget (Share Price Box) */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/f1a2b3c4-d5e6-7890-abcd-ef6789012345"
+              ></iframe>
+              {/* Quarterly Reports Widget (Commodity) */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/a2b3c4d5-e6f7-7890-abcd-ef7890123456"
+              ></iframe>
+              {/* Half Yearly Reports Widget (Share Price Stacked) */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/b2c3d4e5-f6a7-7890-abcd-ef8901234567"
+              ></iframe>
+              {/* Financial Reports Widget (Candlestick Graph) */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/c2d3e4f5-a6b7-7890-abcd-ef9012345678"
+              ></iframe>
+            </div>
+
+            {/* Investor Information Tab */}
+            <div
+              className={`tab-content ${
+                activeTab === "investor-info" ? "active" : ""
+              }`}
+            >
+              <h2>Investor Information</h2>
+              {/* Presentations Widget (Single Currency) */}
+              <iframe
+                className="sharelink"
+                frameBorder="0"
+                loading="lazy"
+                allowTransparency="true"
+                scrolling="no"
+                data-src="https://app.sharelinktechnologies.com/widget/d2e3f4a5-b6c7-7890-abcd-ef0123456789"
+              ></iframe>
+            </div>
+
+            {/* Email Signup Tab */}
+            <div
+              className={`tab-content ${
+                activeTab === "email-signup" ? "active" : ""
+              }`}
+            >
+              <h2>Email Signup</h2>
+              <form>
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+                <input type="email" placeholder="Email (required)" required />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
           </div>
+        );
+      };
 
-          {/* Home Tab with About Us Section */}
-          <div className={`tab-content ${activeTab === 'home' ? 'active' : ''}`}>
-            <h2>About Tinybeans</h2>
-            <p>
-              Tinybeans is a leading global consumer subscription platform, serving millions of Millennial and Gen Z parents and their families monthly. At its core, Tinybeans is a private photo-sharing app and media platform that connects families and turns moments into memories.
-            </p>
-            <p>
-              Tinybeans has been loved and trusted by parents and families around the world since its founding in Australia in 2012, and is an ongoing resource for parents due to its insightful, relatable and credible content written by a team of dedicated parents and experts. Tinybeans enjoys over 150,000 5-star reviews in the Apple App and Google Play stores, and has users in almost every country in the world.
-            </p>
-          </div>
-
-          {/* Market Data Tab with Two Widgets */}
-          <div className={`tab-content ${activeTab === 'market-data' ? 'active' : ''}`}>
-            <h2>Market Data</h2>
-            {/* Share Price Widget */}
-            <iframe 
-              width="100%" 
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              class="sharelink" 
-              scrolling="no" 
-              style="width: 1px;min-width: 100%;" 
-              data-src="https://app.sharelinktechnologies.com/widget/3ec21f41-79b5-45d8-a239-aa9f62e5b5fb">
-            </iframe>
-            {/* Share Price History Widget */}
-            <iframe 
-              width="100%" 
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              class="sharelink" 
-              scrolling="no" 
-              style="width: 1px;min-width: 100%;" 
-              data-src="https://app.sharelinktechnologies.com/widget/9f39e13c-6615-4709-9cdf-628d6878bb18">
-            </iframe>
-          </div>
-
-          {/* Reports and Announcements Tab */}
-          <div className={`tab-content ${activeTab === 'reports' ? 'active' : ''}`}>
-            <h2>Reports and Announcements</h2>
-            {/* ASX Announcements Widget */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/e1f2a3b4-c5d6-7890-abcd-ef5678901234">
-            </iframe>
-            {/* Annual Reports Widget (Share Price Box) */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/f1a2b3c4-d5e6-7890-abcd-ef6789012345">
-            </iframe>
-            {/* Quarterly Reports Widget (Commodity) */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/a2b3c4d5-e6f7-7890-abcd-ef7890123456">
-            </iframe>
-            {/* Half Yearly Reports Widget (Share Price Stacked) */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/b2c3d4e5-f6a7-7890-abcd-ef8901234567">
-            </iframe>
-            {/* Financial Reports Widget (Candlestick Graph) */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/c2d3e4f5-a6b7-7890-abcd-ef9012345678">
-            </iframe>
-          </div>
-
-          {/* Investor Information Tab */}
-          <div className={`tab-content ${activeTab === 'investor-info' ? 'active' : ''}`}>
-            <h2>Investor Information</h2>
-            {/* Presentations Widget (Single Currency) */}
-            <iframe 
-              className="sharelink"
-              frameborder="0" 
-              loading="lazy" 
-              allowtransparency="true" 
-              scrolling="no" 
-              data-src="https://app.sharelinktechnologies.com/widget/d2e3f4a5-b6c7-7890-abcd-ef0123456789">
-            </iframe>
-          </div>
-
-          {/* Email Signup Tab */}
-          <div className={`tab-content ${activeTab === 'email-signup' ? 'active' : ''}`}>
-            <h2>Email Signup</h2>
-            <form>
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
-              <input type="email" placeholder="Email (required)" required />
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
-        </div>
-      );
-    };
-
-    ReactDOM.render(<App />, document.getElementById('root'));
-  </script>
-</body>
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
 </html>
