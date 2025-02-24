@@ -113,7 +113,7 @@
 
     <script type="text/babel">
       const App = () => {
-        const [activeTab, setActiveTab] = React.useState('home');
+        const [activeTab, setActiveTab] = React.useState('market-data');
 
         return (
           <div className="container">
@@ -121,12 +121,6 @@
 
             {/* Tabs */}
             <div className="tabs">
-              <button
-                className={activeTab === 'home' ? 'active' : ''}
-                onClick={() => setActiveTab('home')}
-              >
-                Home
-              </button>
               <button
                 className={activeTab === 'market-data' ? 'active' : ''}
                 onClick={() => setActiveTab('market-data')}
@@ -145,31 +139,6 @@
               >
                 Investor Information
               </button>
-              <button
-                className={activeTab === 'email-signup' ? 'active' : ''}
-                onClick={() => setActiveTab('email-signup')}
-              >
-                Email Signup
-              </button>
-            </div>
-
-            {/* Home Tab with About Us Section */}
-            <div className={`tab-content ${activeTab === 'home' ? 'active' : ''}`}>
-              <h2>About Tinybeans</h2>
-              <p>
-                Tinybeans is a leading global consumer subscription platform, serving
-                millions of Millennial and Gen Z parents and their families monthly.
-                At its core, Tinybeans is a private photo-sharing app and media platform
-                that connects families and turns moments into memories.
-              </p>
-              <p>
-                Tinybeans has been loved and trusted by parents and families around the
-                world since its founding in Australia in 2012, and is an ongoing resource
-                for parents due to its insightful, relatable and credible content written
-                by a team of dedicated parents and experts. Tinybeans enjoys over 150,000
-                5-star reviews in the Apple App and Google Play stores, and has users in
-                almost every country in the world.
-              </p>
             </div>
 
             {/* Market Data Tab with Two Widgets */}
@@ -201,6 +170,15 @@
                 style={{ width: "1px", minWidth: "100%" }}
                 data-src="https://app.sharelinktechnologies.com/widget/9f39e13c-6615-4709-9cdf-628d6878bb18"
               ></iframe>
+
+              {/* Email Signup Form */}
+              <h2>Email Signup</h2>
+              <form>
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+                <input type="email" placeholder="Email (required)" required />
+                <button type="submit">Subscribe</button>
+              </form>
             </div>
 
             {/* Reports and Announcements Tab */}
@@ -253,6 +231,15 @@
                 scrolling="no"
                 data-src="https://app.sharelinktechnologies.com/widget/c2d3e4f5-a6b7-7890-abcd-ef9012345678"
               ></iframe>
+
+              {/* Email Signup Form */}
+              <h2>Email Signup</h2>
+              <form>
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+                <input type="email" placeholder="Email (required)" required />
+                <button type="submit">Subscribe</button>
+              </form>
             </div>
 
             {/* Investor Information Tab */}
@@ -271,14 +258,8 @@
                 scrolling="no"
                 data-src="https://app.sharelinktechnologies.com/widget/d2e3f4a5-b6c7-7890-abcd-ef0123456789"
               ></iframe>
-            </div>
 
-            {/* Email Signup Tab */}
-            <div
-              className={`tab-content ${
-                activeTab === "email-signup" ? "active" : ""
-              }`}
-            >
+              {/* Email Signup Form */}
               <h2>Email Signup</h2>
               <form>
                 <input type="text" placeholder="First Name" />
